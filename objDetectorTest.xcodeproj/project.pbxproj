@@ -14,6 +14,10 @@
 		4D2741B029149FA200FF72CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2741AF29149FA200FF72CF /* Assets.xcassets */; };
 		4D2741B329149FA200FF72CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2741B129149FA200FF72CF /* LaunchScreen.storyboard */; };
 		4D2741BC2914A18B00FF72CF /* VideoCaptureTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741BB2914A18B00FF72CF /* VideoCaptureTool.swift */; };
+		4D2741C32914B60400FF72CF /* yolov5x6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741C02914B60400FF72CF /* yolov5x6.mlmodel */; };
+		4D2741C52914B8B200FF72CF /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741C42914B8B200FF72CF /* Measurements.swift */; };
+		4D3E13512919E292002A786C /* UIImage_CVPixelBufferTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E13502919E292002A786C /* UIImage_CVPixelBufferTool.swift */; };
+		4D3E13532919E38A002A786C /* BoundingBoxDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E13522919E38A002A786C /* BoundingBoxDisplayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		4D2741B229149FA200FF72CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D2741B429149FA200FF72CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2741BB2914A18B00FF72CF /* VideoCaptureTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureTool.swift; sourceTree = "<group>"; };
+		4D2741C02914B60400FF72CF /* yolov5x6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolov5x6.mlmodel; sourceTree = "<group>"; };
+		4D2741C42914B8B200FF72CF /* Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurements.swift; sourceTree = "<group>"; };
+		4D3E13502919E292002A786C /* UIImage_CVPixelBufferTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_CVPixelBufferTool.swift; sourceTree = "<group>"; };
+		4D3E13522919E38A002A786C /* BoundingBoxDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBoxDisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +66,12 @@
 		4D2741A529149FA100FF72CF /* objDetectorTest */ = {
 			isa = PBXGroup;
 			children = (
+				4D2741BD2914B5BB00FF72CF /* AIModels */,
 				4D2741BA2914A17800FF72CF /* Utilities */,
 				4D2741A629149FA100FF72CF /* AppDelegate.swift */,
 				4D2741A829149FA100FF72CF /* SceneDelegate.swift */,
 				4D2741AA29149FA100FF72CF /* MainViewController.swift */,
+				4D3E13522919E38A002A786C /* BoundingBoxDisplayView.swift */,
 				4D2741AC29149FA100FF72CF /* Main.storyboard */,
 				4D2741AF29149FA200FF72CF /* Assets.xcassets */,
 				4D2741B129149FA200FF72CF /* LaunchScreen.storyboard */,
@@ -74,8 +84,18 @@
 			isa = PBXGroup;
 			children = (
 				4D2741BB2914A18B00FF72CF /* VideoCaptureTool.swift */,
+				4D2741C42914B8B200FF72CF /* Measurements.swift */,
+				4D3E13502919E292002A786C /* UIImage_CVPixelBufferTool.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4D2741BD2914B5BB00FF72CF /* AIModels */ = {
+			isa = PBXGroup;
+			children = (
+				4D2741C02914B60400FF72CF /* yolov5x6.mlmodel */,
+			);
+			path = AIModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,10 +170,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2741C32914B60400FF72CF /* yolov5x6.mlmodel in Sources */,
 				4D2741AB29149FA100FF72CF /* MainViewController.swift in Sources */,
+				4D3E13512919E292002A786C /* UIImage_CVPixelBufferTool.swift in Sources */,
 				4D2741A729149FA100FF72CF /* AppDelegate.swift in Sources */,
 				4D2741BC2914A18B00FF72CF /* VideoCaptureTool.swift in Sources */,
+				4D3E13532919E38A002A786C /* BoundingBoxDisplayView.swift in Sources */,
 				4D2741A929149FA100FF72CF /* SceneDelegate.swift in Sources */,
+				4D2741C52914B8B200FF72CF /* Measurements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

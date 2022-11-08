@@ -12,12 +12,10 @@ import AVFoundation
 import CoreVideo
 
 public protocol VideoCaptureDelegate: AnyObject {
-    func videoCapture(_ capture: videoCapture,
-                      didCaptureVideoFrame: CVPixelBuffer?,
-                      timeStamp: CMTime)
+    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame: CVPixelBuffer?, timeStamp: CMTime)
 }
 
-public class videoCapture: NSObject {
+public class VideoCapture: NSObject {
     public var previewLayer: AVCaptureVideoPreviewLayer?
     public var VCDelegate: VideoCaptureDelegate?
     public var fps = 20
@@ -28,8 +26,7 @@ public class videoCapture: NSObject {
 
     var lastTimeStamp = CMTime()
 
-    public func sessionSetup(sessionPreset: AVCaptureSession.Preset = .vga640x480,
-                             completion: @escaping (Bool) -> Void) {
+    public func sessionSetup(sessionPreset: AVCaptureSession.Preset = .vga640x480, completion: @escaping (Bool) -> Void) {
         self.setupCamera(sessionPreset: sessionPreset,
                          completion: { success in
             completion(success)
@@ -78,5 +75,27 @@ public class videoCapture: NSObject {
 
         let success = true
         completion(success)
+    }
+
+    public func start() {
+        if !captureSession.isRunning {
+            captureSession.startRunning()
+        }
+    }
+
+    public func stop() {
+        if captureSession.isRunning {
+            captureSession.stopRunning()
+        }
+    }
+
+}
+
+
+extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
+    public func captureOutput(_ output: AVCaptureOutput,
+                              didDrop sampleBuffer: CMSampleBuffer,
+                              from connection: AVCaptureConnection) {
+        let timeStamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
     }
 }
