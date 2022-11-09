@@ -29,12 +29,12 @@ class BoundingBoxDisplayView: UIView {
 
     public var predictedObjects: [VNRecognizedObjectObservation] = [] {
         didSet {
-            self.drawBoxs(with: predictedObjects)
+            self.drawBoxes(with: predictedObjects)
             self.setNeedsDisplay()
         }
     }
 
-    func drawBoxs(with predictions: [VNRecognizedObjectObservation]) {
+    func drawBoxes(with predictions: [VNRecognizedObjectObservation]) {
         subviews.forEach({ $0.removeFromSuperview() })
 
         for prediction in predictions {
@@ -58,7 +58,7 @@ class BoundingBoxDisplayView: UIView {
 
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         label.text = labelString ?? "N/A"
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 10)
         label.textColor = UIColor.black
         label.backgroundColor = color
         label.sizeToFit()
@@ -68,14 +68,14 @@ class BoundingBoxDisplayView: UIView {
                              height: label.frame.height)
         addSubview(label)
 
-        // Create a dotView to track the object.
+        /// Create a dotView to track the object.
         let dotView = UIView(frame: CGRect(x: bgRect.midX - 2, y: bgRect.midY - 2, width: 4, height: 4))
         dotView.layer.borderColor = color.cgColor
         dotView.layer.borderWidth = 2
         dotView.backgroundColor = UIColor.clear
         addSubview(dotView)
 
-        // Store the object's center coordinates in the array, in the form of [label: [x coordinate, y coordinate]].
+        /// Store the object's center coordinates in the array, in the form of [label: [x coordinate, y coordinate]].
         objectCenterCoordinates[labelString!] = [bgRect.midX, bgRect.midY]
 
         // Create a lineView to connect the center of the same object.
@@ -85,23 +85,19 @@ class BoundingBoxDisplayView: UIView {
         lineView.backgroundColor = UIColor.clear
         addSubview(lineView)
 
-        // Update the center of the object as the object moves.
+        /// Update the center of the object as the object moves.
         objectCenterCoordinates[labelString!] = [bgRect.midX, bgRect.midY]
 
-        // Update the line as the object moves.
+        /// Update the line as the object moves.
         lineView.frame = CGRect(x: objectCenterCoordinates[labelString!]![0],
                                 y: objectCenterCoordinates[labelString!]![1],
                                 width: bgRect.midX - objectCenterCoordinates[labelString!]![0],
                                 height: bgRect.midY - objectCenterCoordinates[labelString!]![1])
 
-        // Remove the line when the object disappears.
-        if prediction.confidence < 0.4 {
-            lineView.removeFromSuperview()
-        }
-
-        // Remove the dot when the object disappears.
+        /// Remove the dot and the line when the object disappears.
         if prediction.confidence < 0.4 {
             dotView.removeFromSuperview()
+            lineView.removeFromSuperview()
         }
     }
 }

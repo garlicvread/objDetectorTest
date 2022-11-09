@@ -6,7 +6,6 @@
 //  Copyright © 2022 IntelligentATLAS. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIImage {

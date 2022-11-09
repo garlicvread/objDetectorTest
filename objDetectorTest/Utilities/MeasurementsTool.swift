@@ -1,5 +1,5 @@
 //
-//  Measurements.swift
+//  MeasurementsTool.swift
 //  objDetectorTest
 //
 //  Created by raymond on 2022/11/04.
@@ -18,7 +18,7 @@ protocol NumericMeasurementsDelegate {
 class NumericMeasurements {
     var delegate: NumericMeasurementsDelegate?
 
-    var index: Int = -1
+    var index: Int = 0  // index[-1] 호출시 크래시 발생
     var numericMeasurements: [Dictionary<String, Double>]
 
     init() {
@@ -62,12 +62,12 @@ class NumericMeasurements {
         let currentMeasurement = numericMeasurements[index]
 
         if let startTime = currentMeasurement["Start"],
-            let endInferenceTime = currentMeasurement["End of inference"],
+            let endInferenceTime = currentMeasurement["EndInference"],
             let endTime = currentMeasurement["End"],
             let beforeStartTime = beforeMeasurement["Start"] {
             delegate?.updateMeasurementResult(inferenceTime: endInferenceTime - startTime,
                                               executionTime: endTime - startTime,
-                                              fps: Int(1/(startTime - beforeStartTime)))
+                                              fps: Int(1/(startTime - beforeStartTime + 0.00000001)))
         }
 
     }
