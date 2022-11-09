@@ -333,7 +333,7 @@ extension ObjectDetectionViewController: NumericMeasurementsDelegate {
 
             self.inferenceLabel.text = "Inference: \(self.movingAverageFilter1.averageValue) ms"
             self.etimeLabel.text = "Execution: \(self.movingAverageFilter2.averageValue) ms"
-            self.fpsLabel.text = "Fps: \(self.movingAverageFilter3.averageValue)"
+            self.fpsLabel.text = "FPS: \(self.movingAverageFilter3.averageValue)"
         }
     }
 }
