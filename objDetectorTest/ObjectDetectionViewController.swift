@@ -11,16 +11,7 @@ import CoreMedia
 
 class ObjectDetectionViewController: UIViewController {
 
-    // TODO: 스토리보드 연결 제거
     // MARK: UI 프로퍼티
-//    var videoPreview: UIView!
-//    var boundingBoxView: BoundingBoxDisplayView!
-//    var labelsTableView: UITableView!
-//
-//    var inferenceLabel: UILabel!
-//    var etimeLabel: UILabel!
-//    var fpsLabel: UILabel!
-
     lazy var videoPreview: UIView = {
         let videoPreview = UIView(frame: self.view.frame)
         videoPreview.clipsToBounds = true
