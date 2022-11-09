@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ObjectDetectionViewController.swift
 //  objDetectorTest
 //
 //  Created by raymond on 2022/11/04.
@@ -9,17 +9,33 @@ import UIKit
 import Vision
 import CoreMedia
 
-class MainViewController: UIViewController {
+class ObjectDetectionViewController: UIViewController {
 
     // TODO: 스토리보드 연결 제거
     // MARK: UI 프로퍼티
-    @IBOutlet weak var videoPreview: UIView!
-    @IBOutlet weak var boundingBoxView: BoundingBoxDisplayView!
-    @IBOutlet weak var labelsTableView: UITableView!
+//    var videoPreview: UIView!
+    var boundingBoxView: BoundingBoxDisplayView!
+    var labelsTableView: UITableView!
 
-    @IBOutlet weak var inferenceLabel: UILabel!
-    @IBOutlet weak var etimeLabel: UILabel!
-    @IBOutlet weak var fpsLabel: UILabel!
+    var inferenceLabel: UILabel!
+    var etimeLabel: UILabel!
+    var fpsLabel: UILabel!
+
+    func createInferenceView() {
+
+    }
+
+    // MARK: lazy var for object recognizer: UIView type.
+    // The frame of the view is 300X240
+    lazy var videoPreview: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.layer.borderColor = UIColor.red.cgColor
+        view.layer.borderWidth = 2
+        view.frame = CGRect(x: 0, y: 0, width: 300, height: 240)
+        return view
+    }()
+
 
     var objectRecognitionModel: yolov5x6 {
         do {
@@ -34,7 +50,7 @@ class MainViewController: UIViewController {
     // MARK: Vision 프레임워크 프로퍼티
     var request: VNCoreMLRequest?
     var visionModel: VNCoreMLModel?
-    var isInferencing = false
+    var didInference = false
 
     // MARK: AV 프레임워크 프로퍼티
     var videoCapture: VideoCapture!
@@ -54,7 +70,7 @@ class MainViewController: UIViewController {
     let movingAverageFilter3 = MovingAverageFilter()
 
     // MARK: CoreML 설정
-    func setUpCoreMLModel() {
+    func setupCoreMLModel() {
         if let visionModel = try? VNCoreMLModel(for: objectRecognitionModel.model) {
             self.visionModel = visionModel
             request = VNCoreMLRequest(model: visionModel,
@@ -65,12 +81,30 @@ class MainViewController: UIViewController {
         }
     }
 
+
+    // MARK: object recognizer view 설정
+    func setupObjectRecognizer() {
+        videoPreview.layer.borderColor = UIColor.red.cgColor
+        videoPreview.layer.borderWidth = 2
+        videoPreview.layer.cornerRadius = 10
+        videoPreview.layer.masksToBounds = true
+        videoPreview.isHidden = true
+        view.addSubview(videoPreview)
+    }
+
+//    func setupObjectRecognizer() {
+//        objectRecognizer = ObjectRecognizer()
+//    }
+
     // MARK: 뷰 컨트롤러 라이프사이클 정의
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /// 모델 설정
-        setUpCoreMLModel()
+        /// 모델 호출
+        setupCoreMLModel()
+
+        /// 객체 탐지기 호출
+        setupObjectRecognizer()
     }
 
 }
@@ -95,7 +129,7 @@ class MovingAverageFilter {
 }
 
 
-extension MainViewController {
+extension ObjectDetectionViewController {
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
         guard let request = request else { fatalError() }
 
@@ -122,19 +156,19 @@ extension MainViewController {
                 // 측정 종료
                 self.performanceMeasurement.didEndNumericMeasurement()
 
-                self.isInferencing = false
+                self.didInference = false
             }
         } else {
             // 측정 종료
             self.performanceMeasurement.didEndNumericMeasurement()
 
-            self.isInferencing = false
+            self.didInference = false
         }
         self.semaphore.signal()
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension ObjectDetectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return predictions.count
     }
@@ -154,7 +188,7 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
-extension MainViewController: NumericMeasurementsDelegate {
+extension ObjectDetectionViewController: NumericMeasurementsDelegate {
     func updateMeasurementResult(inferenceTime: Double, executionTime: Double, fps: Int) {
         print(executionTime, fps)
 
