@@ -58,7 +58,7 @@ class BoundingBoxDisplayView: UIView {
 
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         label.text = labelString ?? "N/A"
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.black
         label.backgroundColor = color
         label.sizeToFit()

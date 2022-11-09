@@ -18,7 +18,7 @@ protocol NumericMeasurementsDelegate {
 class NumericMeasurements {
     var delegate: NumericMeasurementsDelegate?
 
-    var index: Int = 0  // index[-1] 호출시 크래시 발생
+    var index: Int = -1
     var numericMeasurements: [Dictionary<String, Double>]
 
     init() {
@@ -67,7 +67,7 @@ class NumericMeasurements {
             let beforeStartTime = beforeMeasurement["Start"] {
             delegate?.updateMeasurementResult(inferenceTime: endInferenceTime - startTime,
                                               executionTime: endTime - startTime,
-                                              fps: Int(1/(startTime - beforeStartTime + 0.00000001)))
+                                              fps: Int(1/(startTime - beforeStartTime)))
         }
 
     }
