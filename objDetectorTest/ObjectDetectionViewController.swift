@@ -39,6 +39,7 @@ class ObjectDetectionViewController: UIViewController {
     lazy var inferenceLabel: UILabel = {
         let inferenceLabel = UILabel()
         inferenceLabel.contentMode = .left
+        inferenceLabel.font = UIFont.systemFont(ofSize: 10)
         inferenceLabel.translatesAutoresizingMaskIntoConstraints = false
 
         return inferenceLabel
@@ -47,6 +48,7 @@ class ObjectDetectionViewController: UIViewController {
     lazy var etimeLabel: UILabel = {
         let etimeLabel = UILabel()
         etimeLabel.contentMode = .left
+        etimeLabel.font = UIFont.systemFont(ofSize: 10)
         etimeLabel.translatesAutoresizingMaskIntoConstraints = false
 
         return etimeLabel
@@ -55,6 +57,7 @@ class ObjectDetectionViewController: UIViewController {
     lazy var fpsLabel: UILabel = {
         let fpsLabel = UILabel()
         fpsLabel.contentMode = .left
+        fpsLabel.font = UIFont.systemFont(ofSize: 10)
         fpsLabel.translatesAutoresizingMaskIntoConstraints = false
 
         return fpsLabel
@@ -250,7 +253,7 @@ extension ObjectDetectionViewController: VideoCaptureDelegate {
             self.didInference = true
 
             // 측정 시작
-            self.performanceMeasurement.didEndNumericMeasurement()
+            self.performanceMeasurement.didStartNumericMeasurement()
 
             // 추론 시작
             self.predictUsingVision(pixelBuffer: pixelBuffer)
@@ -330,7 +333,7 @@ extension ObjectDetectionViewController: NumericMeasurementsDelegate {
 
             self.inferenceLabel.text = "Inference: \(self.movingAverageFilter1.averageValue) ms"
             self.etimeLabel.text = "Execution: \(self.movingAverageFilter2.averageValue) ms"
-            self.fpsLabel.text = "Fps: \(self.movingAverageFilter3.averageValue)"
+            self.fpsLabel.text = "FPS: \(self.movingAverageFilter3.averageValue)"
         }
     }
 }
