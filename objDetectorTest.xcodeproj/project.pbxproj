@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		4D2741A729149FA100FF72CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741A629149FA100FF72CF /* AppDelegate.swift */; };
 		4D2741A929149FA100FF72CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741A829149FA100FF72CF /* SceneDelegate.swift */; };
-		4D2741AB29149FA100FF72CF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741AA29149FA100FF72CF /* MainViewController.swift */; };
-		4D2741AE29149FA100FF72CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2741AC29149FA100FF72CF /* Main.storyboard */; };
+		4D2741AB29149FA100FF72CF /* ObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741AA29149FA100FF72CF /* ObjectDetectionViewController.swift */; };
 		4D2741B029149FA200FF72CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2741AF29149FA200FF72CF /* Assets.xcassets */; };
-		4D2741B329149FA200FF72CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2741B129149FA200FF72CF /* LaunchScreen.storyboard */; };
 		4D2741BC2914A18B00FF72CF /* VideoCaptureTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741BB2914A18B00FF72CF /* VideoCaptureTool.swift */; };
 		4D2741C32914B60400FF72CF /* yolov5x6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741C02914B60400FF72CF /* yolov5x6.mlmodel */; };
 		4D2741C52914B8B200FF72CF /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2741C42914B8B200FF72CF /* Measurements.swift */; };
@@ -24,10 +22,8 @@
 		4D2741A329149FA100FF72CF /* objDetectorTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = objDetectorTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2741A629149FA100FF72CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D2741A829149FA100FF72CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4D2741AA29149FA100FF72CF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		4D2741AD29149FA100FF72CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4D2741AA29149FA100FF72CF /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
 		4D2741AF29149FA200FF72CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4D2741B229149FA200FF72CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D2741B429149FA200FF72CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2741BB2914A18B00FF72CF /* VideoCaptureTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureTool.swift; sourceTree = "<group>"; };
 		4D2741C02914B60400FF72CF /* yolov5x6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolov5x6.mlmodel; sourceTree = "<group>"; };
@@ -70,11 +66,9 @@
 				4D2741BA2914A17800FF72CF /* Utilities */,
 				4D2741A629149FA100FF72CF /* AppDelegate.swift */,
 				4D2741A829149FA100FF72CF /* SceneDelegate.swift */,
-				4D2741AA29149FA100FF72CF /* MainViewController.swift */,
+				4D2741AA29149FA100FF72CF /* ObjectDetectionViewController.swift */,
 				4D3E13522919E38A002A786C /* BoundingBoxDisplayView.swift */,
-				4D2741AC29149FA100FF72CF /* Main.storyboard */,
 				4D2741AF29149FA200FF72CF /* Assets.xcassets */,
-				4D2741B129149FA200FF72CF /* LaunchScreen.storyboard */,
 				4D2741B429149FA200FF72CF /* Info.plist */,
 			);
 			path = objDetectorTest;
@@ -157,9 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D2741B329149FA200FF72CF /* LaunchScreen.storyboard in Resources */,
 				4D2741B029149FA200FF72CF /* Assets.xcassets in Resources */,
-				4D2741AE29149FA100FF72CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D2741C32914B60400FF72CF /* yolov5x6.mlmodel in Sources */,
-				4D2741AB29149FA100FF72CF /* MainViewController.swift in Sources */,
+				4D2741AB29149FA100FF72CF /* ObjectDetectionViewController.swift in Sources */,
 				4D3E13512919E292002A786C /* UIImage_CVPixelBufferTool.swift in Sources */,
 				4D2741A729149FA100FF72CF /* AppDelegate.swift in Sources */,
 				4D2741BC2914A18B00FF72CF /* VideoCaptureTool.swift in Sources */,
@@ -182,25 +174,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4D2741AC29149FA100FF72CF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D2741AD29149FA100FF72CF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4D2741B129149FA200FF72CF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D2741B229149FA200FF72CF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4D2741B529149FA200FF72CF /* Debug */ = {
@@ -253,7 +226,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -307,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -329,7 +302,6 @@
 				INFOPLIST_FILE = objDetectorTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -357,7 +329,6 @@
 				INFOPLIST_FILE = objDetectorTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
